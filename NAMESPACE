@@ -1,0 +1,5 @@
+exportPattern("^[[:alpha:]]+") 
+import(nlme)
+import(gee)
+import(matrixcalc)
+import(MASS) 
