@@ -75,18 +75,19 @@ function(formula,id,family=gaussian,data,corstr="independence"){
   for (i in 1:size){
   	y<-as.matrix(data$response[data$id==unique(data$id)[i]])
     covariate<-as.matrix(subset(mat[,-length(mat[1,])], mat$subj==unique(data$id)[i]))
+    var_i=var[1:cluster$n[i],1:cluster$n[i]]
     if (family=="gaussian"){
-       xx<-t(covariate)%*%solve(var)%*%covariate
+       xx<-t(covariate)%*%solve(var_i)%*%covariate
        step11<-step11+xx
     }else if (family=="poisson"){
        #D<-cbind(exp(covariate%*%beta_est),t*exp(covariate%*%beta_est))
        D<-mat.prod(covariate, exp(covariate%*%beta_est))
-       Vi <- diag(sqrt(c(exp(covariate%*%beta_est))),ncluster)%*%var%*%diag(sqrt(c(exp(covariate%*%beta_est))),ncluster)
+       Vi <- diag(sqrt(c(exp(covariate%*%beta_est))),cluster$n[i])%*%var_i%*%diag(sqrt(c(exp(covariate%*%beta_est))),cluster$n[i])
        xx<-t(D)%*%solve(Vi)%*%D
        step11<-step11+xx
     }else if (family=="binomial"){
     	D<-mat.prod(covariate, exp(covariate%*%beta_est)/((1+exp(covariate%*%beta_est))^2))
-    	Vi <- diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),ncluster)%*%var%*%diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),ncluster)
+    	Vi <- diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),cluster$n[i])%*%var_i%*%diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),cluster$n[i])
         xx<-t(D)%*%solve(Vi)%*%D
         step11<-step11+xx 
     }
@@ -98,22 +99,23 @@ function(formula,id,family=gaussian,data,corstr="independence"){
   for (i in 1:size){
   	y<-as.matrix(data$response[data$id==unique(data$id)[i]])
     covariate<-as.matrix(subset(mat[,-length(mat[1,])], mat$subj==unique(data$id)[i]))
+    var_i=var[1:cluster$n[i],1:cluster$n[i]]
     if (family=="gaussian"){
-       xy<-t(covariate)%*%solve(var)%*%(y-covariate%*%beta_est)
+       xy<-t(covariate)%*%solve(var_i)%*%(y-covariate%*%beta_est)
        step12<-step12+xy%*%t(xy)
        step13<-step13+vec(xy%*%t(xy))
        p[,i]<-vec(xy%*%t(xy))
     }else if (family=="poisson"){
        #D<-cbind(exp(covariate%*%beta_est),t*exp(covariate%*%beta_est))
        D<-mat.prod(covariate, exp(covariate%*%beta_est))
-       Vi <- diag(sqrt(c(exp(covariate%*%beta_est))),ncluster)%*%var%*%diag(sqrt(c(exp(covariate%*%beta_est))),ncluster)
+       Vi <- diag(sqrt(c(exp(covariate%*%beta_est))),cluster$n[i])%*%var_i%*%diag(sqrt(c(exp(covariate%*%beta_est))),cluster$n[i])
        xy<-t(D)%*%solve(Vi)%*%(y-exp(covariate%*%beta_est))
        step12<-step12+xy%*%t(xy)
        step13<-step13+vec(xy%*%t(xy))
        p[,i]<-vec(xy%*%t(xy)) 
     }else if (family=="binomial"){
        D<-mat.prod(covariate, exp(covariate%*%beta_est)/((1+exp(covariate%*%beta_est))^2))
-       Vi <- diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),ncluster)%*%var%*%diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),ncluster)
+       Vi <- diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),cluster$n[i])%*%var_i%*%diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),cluster$n[i])
        xy<-t(D)%*%solve(Vi)%*%(y-exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est)))
        step12<-step12+xy%*%t(xy)
        step13<-step13+vec(xy%*%t(xy))

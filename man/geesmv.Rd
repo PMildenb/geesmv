@@ -10,6 +10,8 @@ Generalized estimating equations with the original sandwich variance estimator p
 }
 \details{
 Generalized estimating equations with the original sandwich variance estimator proposed by Liang and Zeger (1986), and eight types of more recent modified variance estimators for improving the finite small-sample performance.
+
+GEE.var.pan(), GEE.var.gst() and GEE.var.wl() are only for the balanced data, while the others can be used for both balanced and unbalanced data.
 }
 \author{
 Ming Wang <mwang@phs.psu.edu>
