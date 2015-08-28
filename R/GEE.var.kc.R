@@ -85,7 +85,7 @@ function(formula,id,family=gaussian,data,corstr="independence"){
        Vi <- diag(sqrt(c(exp(covariate%*%beta_est))),cluster$n[i])%*%var_i%*%diag(sqrt(c(exp(covariate%*%beta_est))),cluster$n[i])
        xx<-t(D)%*%solve(Vi)%*%D
        step11<-step11+xx
-    }else if (family=="biominal"){
+    }else if (family=="binomial"){
     	D<-mat.prod(covariate, exp(covariate%*%beta_est)/((1+exp(covariate%*%beta_est))^2))
         Vi <- diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),cluster$n[i])%*%var_i%*%diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),cluster$n[i])
         xx<-t(D)%*%solve(Vi)%*%D

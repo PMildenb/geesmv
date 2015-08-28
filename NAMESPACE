@@ -1,4 +1,5 @@
 exportPattern("^[[:alpha:]]+") 
+import(stats)
 import(nlme)
 import(gee)
 import(matrixcalc)
