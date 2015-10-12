@@ -1,10 +1,10 @@
-a4b93db4b94f7ef04f6cf0bd1fe0cbfc *DESCRIPTION
+fded6e7d81340b05c9e6ea625c8a0439 *DESCRIPTION
 cf930b0f35632e6eee8934c4c529d8a7 *NAMESPACE
 4e6c5085853d9d2458bb41d595264ccc *R/GEE.var.fg.R
 160e7eaeee4ad1438b92eceb3cf46e22 *R/GEE.var.gst.R
 26c85221e5a4cb5eb5cd03ff2b28cd56 *R/GEE.var.kc.R
 ff1c9d367569b2221cdf113f2ecd4c2d *R/GEE.var.lz.R
-5c557fc7034b98eef19c0c80f0093b29 *R/GEE.var.mbn.R
+18f837c5bc3f497ad8fd0c1330b2e515 *R/GEE.var.mbn.R
 4499545bc78820de9d266a785a564056 *R/GEE.var.md.R
 56cb5f7cba04f855b58a3c7313c07a6c *R/GEE.var.mk.R
 e8df4f92d13853b6165cd5a1b974b428 *R/GEE.var.pan.R
@@ -23,7 +23,7 @@ d7af4d1904d4dc5e7315f87cf7d11436 *man/GEE.var.fg.Rd
 43baaca5760bcc7a7312447573837557 *man/GEE.var.gst.Rd
 986abd93c56a3f82c6ed9e05f83c341e *man/GEE.var.kc.Rd
 7a697ac5478e19f8a053f839c7e988b3 *man/GEE.var.lz.Rd
-61e6022a8c472415c94c1424607d04ea *man/GEE.var.mbn.Rd
+ea27aada05fc3ddfcdc93a597145de9e *man/GEE.var.mbn.Rd
 277484e6742b2889446ebd5e501e0374 *man/GEE.var.md.Rd
 9d51425ccc505858f4ea181c9e5ed8a7 *man/GEE.var.mk.Rd
 fc584a3a8f8e2e9e917f04618a2945f6 *man/GEE.var.pan.Rd

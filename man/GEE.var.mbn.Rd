@@ -1,7 +1,7 @@
 \name{GEE.var.mbn}
 \alias{GEE.var.mbn}
 \title{
-A odified GEE Variance Estimator Proposed by Morel, Bokossa and Neerchal (2003).
+A modified GEE Variance Estimator Proposed by Morel, Bokossa and Neerchal (2003).
 }
 \description{
 Calculate the modified GEE variance estimator proposed by Morel, Bokossa and Neerchal (2003).

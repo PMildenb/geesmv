@@ -115,7 +115,7 @@ function(formula,id,family=gaussian,data,corstr="independence",d=2,r=1){
        xy<-t(D)%*%solve(Vi)%*%(y-exp(covariate%*%beta_est))
        step00<-step00+xy%*%t(xy)
     }else if (family=="binomial"){
-       D<-mat.prod(covariate, exp(covariate%*%beta_est)/((1+exp(-covariate%*%beta_est))^2))
+       D<-mat.prod(covariate, exp(covariate%*%beta_est)/((1+exp(covariate%*%beta_est))^2))
        Vi <- diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),ncluster)%*%var1%*%diag(sqrt(c(exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est))^2)),ncluster)
        xy<-t(D)%*%solve(Vi)%*%(y-exp(covariate%*%beta_est)/(1+exp(covariate%*%beta_est)))
        step00<-step00+xy%*%t(xy)
