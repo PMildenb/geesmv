@@ -6,6 +6,8 @@ function(A)
    d<-(d+abs(d))/2
    d2<-1 / sqrt(d)
    d2[d == 0]<-0
-   ans<-ei$vectors %*% diag(d2) %*% t(ei$vectors)
+   if(isSymmetric(A)) ei_vec_inv <- t(ei$vectors)
+   else               ei_vec_inv <- solve(ei$vectors)
+   ans <- ei$vectors %*% diag(sqrt(d)) %*% ei_vec_inv
    return(ans)
 }
